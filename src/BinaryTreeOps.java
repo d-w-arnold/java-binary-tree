@@ -77,4 +77,27 @@ public class BinaryTreeOps
         }
         return total;
     }
+
+
+    /**
+     * If the root node has a tree depth of 0, and each layer down the tree depth increases by 1,
+     * this finds the sum tree depths for all nodes in the Binary Tree.
+     * <p>
+     * Also, does this calculation starting from every node in the Binary Tree,
+     * then returns the entire total.
+     *
+     * @param binaryTreeNode The root node.
+     * @return The sum of all tree depths for all nodes, starting from every node.
+     */
+    public int sumTreeDepthsExtra(BinaryTreeNode binaryTreeNode)
+    {
+        int total = sumTreeDepths(binaryTreeNode);
+        if (binaryTreeNode.getLeftChild() != null) {
+            total += sumTreeDepthsExtra(binaryTreeNode.getLeftChild());
+        }
+        if (binaryTreeNode.getRightChild() != null) {
+            total += sumTreeDepthsExtra(binaryTreeNode.getRightChild());
+        }
+        return total;
+    }
 }

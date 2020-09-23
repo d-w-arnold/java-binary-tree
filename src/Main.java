@@ -29,5 +29,6 @@ public class Main
         binaryTreeOps.reverseRecursive(root);
         binaryTreeOps.reverseIterative(root);
         System.out.println(binaryTreeOps.sumTreeDepths(root));
+        System.out.println(binaryTreeOps.sumTreeDepthsExtra(root));
     }
 }
