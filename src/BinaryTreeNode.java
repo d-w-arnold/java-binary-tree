@@ -1,9 +1,6 @@
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * BinaryTreeNode class.
- *
+ * <p>
  * A node in a BinaryTree.
  *
  * @author David W. Arnold
@@ -69,37 +66,5 @@ public class BinaryTreeNode
     public void setRightChild(BinaryTreeNode rightChild)
     {
         this.rightChild = rightChild;
-    }
-
-    public void reverseRecursive(BinaryTreeNode binaryTreeNode)
-    {
-        if (binaryTreeNode != null) {
-            BinaryTreeNode tmp = binaryTreeNode.getLeftChild();
-            binaryTreeNode.setLeftChild(binaryTreeNode.getRightChild());
-            binaryTreeNode.setRightChild(tmp);
-            reverseRecursive(binaryTreeNode.getLeftChild());
-            reverseRecursive(binaryTreeNode.getRightChild());
-        }
-    }
-
-    public void reverseIterative(BinaryTreeNode binaryTreeNode)
-    {
-        List<BinaryTreeNode> queue = new ArrayList<>();
-        if (binaryTreeNode != null) {
-            queue.add(binaryTreeNode);
-        }
-        while (!queue.isEmpty()) {
-            BinaryTreeNode node = queue.get(0);
-            queue.remove(0);
-            if (node.getLeftChild() != null) {
-                queue.add(node.getLeftChild());
-            }
-            if (node.getRightChild() != null) {
-                queue.add(node.getRightChild());
-            }
-            BinaryTreeNode tmp = node.getLeftChild();
-            node.setLeftChild(node.getRightChild());
-            node.setRightChild(tmp);
-        }
     }
 }
