@@ -26,6 +26,8 @@ public class Main
                         new BinaryTreeNode(9)
                 )
         );
+        System.out.println(binaryTreeOps.totalBinaryTreeRecursive(root));
+        System.out.println(binaryTreeOps.totalBinaryTreeIterative(root));
         binaryTreeOps.reverseRecursive(root);
         binaryTreeOps.reverseIterative(root);
         System.out.println(binaryTreeOps.sumTreeDepths(root));

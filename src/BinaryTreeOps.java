@@ -2,13 +2,87 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Operations for BinaryTreeNodes.
+ * Operations for {@link BinaryTreeNode}.
  *
  * @author David W. Arnold
  * @version 23/09/2020
  */
 public class BinaryTreeOps
 {
+    private int total;
+
+    /**
+     * Initialise the {@link BinaryTreeOps} class.
+     */
+    public BinaryTreeOps()
+    {
+        total = 0;
+    }
+
+    /**
+     * Recursively count the total of all nodes in a Binary Tree.
+     *
+     * @param binaryTreeNode The root node.
+     * @return The sum of all nodes in a Binary Tree.
+     */
+    public int totalBinaryTreeRecursive(BinaryTreeNode binaryTreeNode)
+    {
+        total = 0;
+        totalBinaryTreeRecursiveHelper(binaryTreeNode);
+        return total;
+    }
+
+    /**
+     * Helper method for {@link #totalBinaryTreeRecursive(BinaryTreeNode) totalBinaryTreeRecursive}.
+     */
+    public void totalBinaryTreeRecursiveHelper(BinaryTreeNode binaryTreeNode)
+    {
+        if (binaryTreeNode != null) {
+            total += binaryTreeNode.getValue();
+            if (binaryTreeNode.getLeftChild() != null) {
+                totalBinaryTreeRecursiveHelper(binaryTreeNode.getLeftChild());
+            }
+            if (binaryTreeNode.getRightChild() != null) {
+                totalBinaryTreeRecursiveHelper(binaryTreeNode.getRightChild());
+            }
+        }
+    }
+
+    /**
+     * Iteratively count the total of all nodes in a Binary Tree.
+     *
+     * @param binaryTreeNode The root node.
+     * @return The sum of all nodes in a Binary Tree.
+     */
+    public int totalBinaryTreeIterative(BinaryTreeNode binaryTreeNode)
+    {
+        total = 0;
+        totalBinaryTreeIterativeHelper(binaryTreeNode);
+        return total;
+    }
+
+    /**
+     * Helper method for {@link #totalBinaryTreeIterative(BinaryTreeNode) totalBinaryTreeIterative}.
+     */
+    public void totalBinaryTreeIterativeHelper(BinaryTreeNode binaryTreeNode)
+    {
+        List<BinaryTreeNode> queue = new ArrayList<>();
+        if (binaryTreeNode != null) {
+            queue.add(binaryTreeNode);
+        }
+        while (!queue.isEmpty()) {
+            BinaryTreeNode node = queue.get(0);
+            queue.remove(0);
+            if (node.getLeftChild() != null) {
+                queue.add(node.getLeftChild());
+            }
+            if (node.getRightChild() != null) {
+                queue.add(node.getRightChild());
+            }
+            total += node.getValue();
+        }
+    }
+
     /**
      * Reverse the Binary Tree using recursion.
      *
@@ -64,7 +138,7 @@ public class BinaryTreeOps
     }
 
     /**
-     * Helper method for sumTreeDepths().
+     * Helper method for {@link #sumTreeDepths(BinaryTreeNode) sumTreeDepths}.
      */
     private int sumTreeDepthsHelper(BinaryTreeNode binaryTreeNode, int i)
     {
