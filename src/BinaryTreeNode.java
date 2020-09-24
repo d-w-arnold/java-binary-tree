@@ -13,7 +13,7 @@ public class BinaryTreeNode
     private BinaryTreeNode rightChild;
 
     /**
-     * Leaf node constructor.
+     * Initialise the {@link BinaryTreeNode} class, as a leaf node.
      *
      * @param value The value of the node.
      */
@@ -25,7 +25,7 @@ public class BinaryTreeNode
     }
 
     /**
-     * Internal node constructor.
+     * Initialise the {@link BinaryTreeNode} class, as an internal node.
      *
      * @param value      The value of the node.
      * @param leftChild  The left child node.
